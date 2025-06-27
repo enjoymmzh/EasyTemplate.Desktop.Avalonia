@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<item>
+  <version>2.0.3.0</version>
+
+  <url>https://test.api.com/file/client/release/update.zip</url>
+
+  <changelog>https://test.api.com/file/client/release/update_log.html</changelog>
+
+  <mandatory>true</mandatory>
+</item>
