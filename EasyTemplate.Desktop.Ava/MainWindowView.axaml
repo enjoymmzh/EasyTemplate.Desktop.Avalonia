@@ -1,0 +1,216 @@
+<suki:SukiWindow
+    x:Class="EasyTemplate.Ava.MainWindowView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+    xmlns:views="clr-namespace:EasyTemplate.Ava.Features"
+    xmlns:vm="clr-namespace:EasyTemplate.Ava"
+    Title="{Binding AppName}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    BackgroundAnimationEnabled="True"
+    CanPin="True"
+    Icon="/Assets/avalonia-logo.ico"
+    IsMenuVisible="True"
+    TitleBarAnimationEnabled="True"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <suki:SukiWindow.Hosts>
+        <suki:SukiDialogHost Name="DialogHost" />
+        <suki:SukiToastHost Name="ToastHost" />
+    </suki:SukiWindow.Hosts>
+    <suki:SukiWindow.RightWindowTitleBarControls>
+        <Button Classes="WindowControlsButton">
+            <avalonia:MaterialIcon Foreground="{DynamicResource SukiText}" Kind="Cog" />
+            <Button.Flyout>
+                <Flyout>
+                    <Panel>
+                        <Border
+                            Margin="20"
+                            BoxShadow="{DynamicResource SukiPopupShadow}"
+                            CornerRadius="20" />
+                        <Border
+                            MinWidth="350"
+                            Margin="20"
+                            Background="{DynamicResource SukiCardBackground}"
+                            BorderBrush="{DynamicResource SukiLightBorderBrush}"
+                            BorderThickness="1"
+                            ClipToBounds="True"
+                            CornerRadius="15">
+                            <Border Padding="15" Background="{DynamicResource PopupGradientBrush}">
+
+                                <StackPanel Margin="0,0,0,0" Spacing="20">
+
+                                    <Grid ColumnDefinitions="*,20,*">
+                                        <ToggleButton
+                                            Padding="15"
+                                            Command="{Binding ChangeLDCommand}"
+                                            CornerRadius="15"
+                                            IsChecked="{Binding IsLight}">
+                                            <StackPanel
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <avalonia:MaterialIcon
+                                                    Width="20"
+                                                    Height="20"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{DynamicResource SukiText}"
+                                                    Kind="ThemeLightDark" />
+                                                <TextBlock Text="{Binding ThemeName}" />
+                                            </StackPanel>
+                                        </ToggleButton>
+
+                                        <ToggleButton
+                                            Grid.Column="2"
+                                            Padding="15"
+                                            CornerRadius="15"
+                                            IsChecked="{Binding IsProxy}">
+                                            <StackPanel
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <avalonia:MaterialIcon
+                                                    Width="20"
+                                                    Height="20"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{DynamicResource SukiText}"
+                                                    Kind="ThemeLightDark" />
+                                                <TextBlock Text="{Binding ProxyName}" />
+                                            </StackPanel>
+                                        </ToggleButton>
+
+                                    </Grid>
+
+                                    <suki:GlassCard Padding="15" CornerRadius="15">
+                                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock
+                                                Margin="0,0,10,0"
+                                                VerticalAlignment="Center"
+                                                Foreground="{DynamicResource SukiLowText}"
+                                                Text="{Binding ThemeColor}" />
+                                            <RadioButton
+                                                Width="50"
+                                                Height="50"
+                                                Classes="GigaChips"
+                                                Command="{Binding ToYellowCommand}"
+                                                CornerRadius="50"
+                                                GroupName="RadioColorTheme">
+                                                <Border
+                                                    Margin="-30"
+                                                    Background="rgb(212,136,6)"
+                                                    CornerRadius="50" />
+                                            </RadioButton>
+                                            <RadioButton
+                                                Width="50"
+                                                Height="50"
+                                                Classes="GigaChips"
+                                                Command="{Binding ToRedCommand}"
+                                                CornerRadius="50"
+                                                GroupName="RadioColorTheme">
+                                                <Border
+                                                    Margin="-30"
+                                                    Background="rgb(208,58,47)"
+                                                    CornerRadius="50" />
+                                            </RadioButton>
+                                            <RadioButton
+                                                Width="50"
+                                                Height="50"
+                                                Classes="GigaChips"
+                                                Command="{Binding ToGreenCommand}"
+                                                CornerRadius="50"
+                                                GroupName="RadioColorTheme">
+                                                <Border
+                                                    Margin="-30"
+                                                    Background="rgb(83,120,52)"
+                                                    CornerRadius="50" />
+                                            </RadioButton>
+                                            <RadioButton
+                                                Width="50"
+                                                Height="50"
+                                                Classes="GigaChips"
+                                                Command="{Binding ToBlueCommand}"
+                                                CornerRadius="50"
+                                                GroupName="RadioColorTheme">
+                                                <Border
+                                                    Margin="-30"
+                                                    Background="rgb(10,89,247)"
+                                                    CornerRadius="50" />
+                                            </RadioButton>
+                                        </DockPanel>
+                                    </suki:GlassCard>
+
+                                    <suki:GlassCard Padding="15" CornerRadius="15">
+                                        <DockPanel>
+                                            <ToggleSwitch
+                                                VerticalAlignment="Center"
+                                                Command="{Binding CheckCommand}"
+                                                DockPanel.Dock="Right"
+                                                IsChecked="{Binding IsChecked}" />
+                                            <TextBlock
+                                                Margin="0,8,0,0"
+                                                VerticalAlignment="Center"
+                                                DockPanel.Dock="Bottom"
+                                                Foreground="{DynamicResource SukiLowText}"
+                                                Text="{Binding CloseToTrayContent}" />
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontSize="15"
+                                                FontWeight="DemiBold"
+                                                Text="{Binding TrayContent}" />
+                                        </DockPanel>
+                                    </suki:GlassCard>
+                                </StackPanel>
+
+                            </Border>
+                        </Border>
+                    </Panel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
+    </suki:SukiWindow.RightWindowTitleBarControls>
+    <suki:SukiWindow.MenuItems>
+        <MenuItem Header="{Binding HelpContent}">
+            <MenuItem Header="{Binding LanguageContent}">
+                <MenuItem.Icon>
+                    <avalonia:MaterialIcon Kind="Lightbulb" />
+                </MenuItem.Icon>
+                <MenuItem
+                    Command="{Binding SwitchLanguageCommand}"
+                    CommandParameter="zh-CN"
+                    Header="简体中文" />
+                <MenuItem
+                    Command="{Binding SwitchLanguageCommand}"
+                    CommandParameter="zh-TW"
+                    Header="繁體中文" />
+                <MenuItem
+                    Command="{Binding SwitchLanguageCommand}"
+                    CommandParameter="en-US"
+                    Header="English (US)" />
+            </MenuItem>
+
+            <MenuItem Command="{Binding CheckVersionCommand}" Header="{Binding CheckUpdateContent}">
+                <MenuItem.Icon>
+                    <avalonia:MaterialIcon Kind="Update" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{Binding FeedbackCommand}" Header="{Binding FeedbackContent}">
+                <MenuItem.Icon>
+                    <avalonia:MaterialIcon Kind="Feedback" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{Binding AboutCommand}" Header="{Binding AboutContent}">
+                <MenuItem.Icon>
+                    <avalonia:MaterialIcon Kind="Information" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </MenuItem>
+    </suki:SukiWindow.MenuItems>
+    <views:MainView />
+</suki:SukiWindow>

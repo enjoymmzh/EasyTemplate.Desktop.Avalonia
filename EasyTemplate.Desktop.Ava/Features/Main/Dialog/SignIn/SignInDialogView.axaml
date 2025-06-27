@@ -1,0 +1,80 @@
+<UserControl
+    x:Class="EasyTemplate.Ava.Features.SignInDialogView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="https://github.com/kikipoulet/SukiUI"
+    xmlns:vm="clr-namespace:EasyTemplate.Ava.Features"
+    d:DesignHeight="350"
+    d:DesignWidth="450"
+    x:DataType="vm:SignInDialogViewModel"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <suki:BusyArea
+                Name="BusySignIn"
+                BusyText="{Binding LogginginContent}"
+                IsBusy="{Binding IsLoggingIn}">
+                <StackPanel>
+                    <avalonia:MaterialIcon
+                        Width="30"
+                        Height="30"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource SukiPrimaryColor}"
+                        Kind="MicrosoftEdge" />
+                    <TextBlock
+                        Margin="0,5,0,27"
+                        HorizontalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="DemiBold"
+                        Text="{Binding LogininfoContent}" />
+                    <TextBlock
+                        Margin="6,0,0,3"
+                        FontWeight="DemiBold"
+                        Foreground="{DynamicResource SukiLowText}"
+                        Text="{Binding UsernameContent}" />
+                    <TextBox suki:TextBoxExtensions.Prefix="" Watermark="admin" />
+                    <TextBlock
+                        Margin="6,18,0,3"
+                        FontWeight="DemiBold"
+                        Foreground="{DynamicResource SukiLowText}"
+                        Text="{Binding PasswordContent}" />
+                    <TextBox
+                        Name="PasswordTextBox"
+                        Margin="0,0,0,25"
+                        suki:TextBoxExtensions.AddDeleteButton="False"
+                        PasswordChar="*"
+                        Watermark="123456" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="6,0,0,3"
+                            VerticalAlignment="Center"
+                            FontWeight="DemiBold"
+                            Foreground="{DynamicResource SukiLowText}"
+                            Text="{Binding RememberContent}" />
+                        <ToggleSwitch
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding IsRemember}" />
+                    </StackPanel>
+                </StackPanel>
+            </suki:BusyArea>
+            <Button
+                Name="ButtonSignIn"
+                Width="160"
+                Height="40"
+                Margin="0,10,0,7"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                suki:ButtonExtensions.ShowProgress="{Binding IsLoggingIn}"
+                Classes="Flat Rounded"
+                Command="{Binding LoginCommand}"
+                Content="{Binding LoginContent}"
+                FontWeight="DemiBold" />
+        </StackPanel>
+    </Grid>
+</UserControl>

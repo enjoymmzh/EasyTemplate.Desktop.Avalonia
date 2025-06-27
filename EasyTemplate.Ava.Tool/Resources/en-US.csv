@@ -1,0 +1,66 @@
+appname,Application
+signin,Click Avatar To Sign In
+signout,Sign Out
+dark,Dark Mode
+light,Light Mode
+proxy,Proxy
+color,Theme Color
+help,Help
+language,Language
+update,Check Update
+feedback,Feedback
+about,About
+aboutinfo,This is a simple application template designed to help you quickly get started with desktop application development.
+closetotray,Close To Tray
+tray,Tray
+submit,Submit
+cancel,Cancel
+ok,Ok
+reset,Reset
+suggestion,Please enter your feedback or suggestions
+logerror,Error Log
+add,Add
+edit,Edit
+delete,Delete
+search,Search
+check,Check
+keyword,Search Keyword
+action,Action
+success,Success
+fail,Fail
+warning,Warning
+info,Information
+confirm,Confirm
+error,Error
+home,Home Page
+management,Management
+datamanagement,Data
+log,Log
+setting,Setting
+nocontent,No Content
+submitted,Successfully submitted
+languagewillchange,The language will be changed to {0}. Please restart the application for the changes to take effect.
+submitting,Submitting
+login,Sign In
+username,User Name
+password,Password
+loggingin,Signing In
+logininfo,Sign in to your account
+show,Show
+hide,Hide
+exit,Exit
+function,Function
+func1,Function 1
+func2,Function 2
+func3,Function 3
+loading,Loading
+remember,Remember Me
+browse,Browse
+upadteavailable,Update Available
+updateinfo,Information, Update v{0} is Now Available.
+later,Later
+update,Update
+updating,Updating
+noupdate,No Update Available
+updatedone,Update Completed, Would You Like To Restart Now?
+unzip,Unzipping

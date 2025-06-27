@@ -1,0 +1,42 @@
+<Application
+    x:Class="EasyTemplate.Ava.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:EasyTemplate.Ava"
+    xmlns:material="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
+    x:DataType="local:AppViewModel"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.Styles>
+        <sukiUi:SukiTheme Locale="zh-CN" ThemeColor="Blue" />
+        <material:MaterialIconStyles />
+    </Application.Styles>
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon
+                Command="{Binding PopupCommand}"
+                Icon="/Assets/avalonia-logo.ico"
+                ToolTipText="{Binding AppName}">
+                <TrayIcon.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Command="{Binding PopupCommand}" Header="{Binding ShowContent}" />
+                        <NativeMenuItem Header="{Binding FunctionContent}">
+                            <NativeMenu>
+                                <NativeMenuItem Header="{Binding Func1Content}" />
+                                <NativeMenuItem Header="{Binding Func2Content}" />
+                                <NativeMenuItemSeparator />
+                                <NativeMenuItem Header="{Binding Func3Content}" />
+                            </NativeMenu>
+                        </NativeMenuItem>
+                        <NativeMenuItem Command="{Binding ExitCommand}" Header="{Binding ExitContent}" />
+                    </NativeMenu>
+                </TrayIcon.Menu>
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
+</Application>

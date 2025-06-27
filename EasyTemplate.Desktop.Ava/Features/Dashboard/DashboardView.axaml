@@ -1,0 +1,149 @@
+<UserControl
+    x:Class="EasyTemplate.Ava.Features.DashboardView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="clr-namespace:SukiUI.Animations;assembly=SukiUI"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+    xmlns:vm="clr-namespace:EasyTemplate.Ava.Features"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:DashboardViewModel"
+    mc:Ignorable="d">
+    <Grid RowDefinitions="300,*">
+        <suki:GlassCard Margin="15">
+            <suki:GroupBox>
+                <suki:GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <avalonia:MaterialIcon Foreground="{DynamicResource SukiLowText}" Kind="Dollar" />
+                        <TextBlock Margin="5,0,0,0" Text="数据统计" />
+                    </StackPanel>
+                </suki:GroupBox.Header>
+                <WrapPanel
+                    Margin="0,25,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                    <suki:GlassCard
+                        Width="300"
+                        Margin="7"
+                        animations:SquishyDragExtensions.Enable="True">
+                        <StackPanel HorizontalAlignment="Left" Spacing="0,8">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="DemiBold"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="HOBBY" />
+                            <TextBlock
+                                FontSize="23"
+                                FontWeight="DemiBold"
+                                Text="1 Gb" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="Plan for a moderate use as hobby."
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </suki:GlassCard>
+
+                    <suki:GlassCard Width="300" Margin="7">
+                        <StackPanel HorizontalAlignment="Left" Spacing="0,8">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="DemiBold"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="HOBBY" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="Plan for "
+                                TextWrapping="Wrap" />
+                            <ProgressBar
+                                Margin="0,5,0,5"
+                                IsIndeterminate="True"
+                                ShowProgressText="True"
+                                Value="23" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="Plan for a moderate use as hobby."
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </suki:GlassCard>
+
+                    <suki:GlassCard Width="300" Margin="7">
+                        <StackPanel HorizontalAlignment="Left" Spacing="0,8">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="DemiBold"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="HOBBY" />
+                            <StackPanel Margin="5" Orientation="Horizontal">
+                                <suki:CircleProgressBar
+                                    Width="80"
+                                    Height="80"
+                                    IsIndeterminate="True"
+                                    StrokeWidth="11"
+                                    Value="34">
+                                    <TextBlock
+                                        Margin="0,2,0,0"
+                                        Classes="h3"
+                                        IsVisible="True"
+                                        Text="34%" />
+                                </suki:CircleProgressBar>
+                                <TextBlock
+                                    FontSize="15"
+                                    Foreground="{DynamicResource SukiLowText}"
+                                    Text="Plan for a moderate use as hobby."
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                        </StackPanel>
+                    </suki:GlassCard>
+
+                    <suki:GlassCard
+                        Width="300"
+                        Margin="7"
+                        animations:SquishyDragExtensions.Enable="True">
+                        <StackPanel HorizontalAlignment="Left" Spacing="0,8">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="DemiBold"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="HOBBY" />
+                            <ProgressBar
+                                Margin="0,5,0,5"
+                                IsIndeterminate="True"
+                                ShowProgressText="True"
+                                Value="23" />
+                            <TextBlock
+                                FontSize="15"
+                                Foreground="{DynamicResource SukiLowText}"
+                                Text="Plan for a moderate use as hobby."
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </suki:GlassCard>
+
+                </WrapPanel>
+            </suki:GroupBox>
+        </suki:GlassCard>
+        <suki:GlassCard Grid.Row="1" Margin="15,0,15,15">
+            <TabControl>
+                <TabItem Header="图表1">
+                    <lc:CartesianChart
+                        Margin="15"
+                        Series="{Binding Series}"
+                        TooltipPosition="Top"
+                        ZoomMode="X" />
+                </TabItem>
+                <TabItem Header="统计1">
+                    <!--  Content  -->
+                </TabItem>
+            </TabControl>
+        </suki:GlassCard>
+    </Grid>
+
+
+</UserControl>

@@ -1,0 +1,164 @@
+<UserControl
+    x:Class="EasyTemplate.Ava.Features.DataView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+    xmlns:vm="clr-namespace:EasyTemplate.Ava.Features"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:DataViewModel"
+    mc:Ignorable="d">
+
+    <Grid RowDefinitions="80,*,80">
+        <suki:GlassCard Margin="15,10,15,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBox
+                    Width="200"
+                    Margin="0,2,0,0"
+                    VerticalAlignment="Center"
+                    Text="{Binding Keyword}"
+                    Watermark="{Binding KeywordContent}" />
+                <Button
+                    Height="35"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SearchCommand}">
+                    <avalonia:MaterialIcon Kind="Magnify" />
+                </Button>
+                <Button
+                    Height="35"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding ResetCommand}">
+                    <avalonia:MaterialIcon Kind="ArrowLeftTop" />
+                </Button>
+                <Button
+                    Height="35"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Classes="Information"
+                    Command="{Binding AddCommand}">
+                    <avalonia:MaterialIcon Kind="Plus" />
+                </Button>
+            </StackPanel>
+        </suki:GlassCard>
+        <suki:BusyArea
+            Name="BusySignIn"
+            Grid.Row="1"
+            BusyText="{Binding LoadingContent}"
+            IsBusy="{Binding IsLoading}">
+            <DataGrid
+                Grid.Row="1"
+                Margin="15,10,15,10"
+                VerticalAlignment="Top"
+                AutoGenerateColumns="False"
+                ColumnHeaderHeight="100"
+                IsReadOnly="True"
+                ItemsSource="{Binding Invoices}"
+                RowHeight="60">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="100"
+                        Binding="{Binding Id}"
+                        Header="Id" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding BillingName}"
+                        Header="BillingName" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding AmountPaid}"
+                        Header="AmountPaid" />
+                    <DataGridCheckBoxColumn
+                        Width="50"
+                        Binding="{Binding Paid}"
+                        Header="Paid" />
+                    <DataGridTemplateColumn
+                        Width="250"
+                        x:DataType="vm:DataViewModel"
+                        Header="{Binding ActionContent}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="vm:DataViewModel">
+                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                    <Button
+                                        Width="50"
+                                        Height="30"
+                                        Padding="4"
+                                        x:DataType="vm:DataViewModel"
+                                        Classes="Success"
+                                        Command="{Binding EditCommand}"
+                                        CommandParameter="{Binding $parent.DataContext}"
+                                        DataContext="{Binding $parent[UserControl].DataContext}"
+                                        ToolTip.Tip="{Binding EditContent}">
+                                        <avalonia:MaterialIcon Kind="Pencil" />
+                                    </Button>
+                                    <Button
+                                        Width="50"
+                                        Height="30"
+                                        Margin="10,0,0,0"
+                                        Padding="4"
+                                        x:DataType="vm:DataViewModel"
+                                        Classes="Warning"
+                                        Command="{Binding EditCommand}"
+                                        CommandParameter="{Binding $parent.DataContext}"
+                                        DataContext="{Binding $parent[UserControl].DataContext}"
+                                        ToolTip.Tip="{Binding CheckContent}">
+                                        <avalonia:MaterialIcon Kind="Eye" />
+                                    </Button>
+                                    <Button
+                                        Width="50"
+                                        Height="30"
+                                        Margin="10,0,0,0"
+                                        Padding="4"
+                                        x:DataType="vm:DataViewModel"
+                                        Classes="Danger"
+                                        Command="{Binding EditCommand}"
+                                        CommandParameter="{Binding $parent.DataContext}"
+                                        DataContext="{Binding $parent[UserControl].DataContext}"
+                                        ToolTip.Tip="{Binding DeleteContent}">
+                                        <avalonia:MaterialIcon Kind="Delete" />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </suki:BusyArea>
+
+        <suki:GlassCard Grid.Row="2" Margin="15,0,15,10">
+            <StackPanel Orientation="Horizontal">
+                <Button Height="45" Classes="Primary">
+                    <avalonia:MaterialIcon Kind="ArrowCollapseLeft" />
+                </Button>
+                <Button
+                    Height="45"
+                    Margin="10,0,0,0"
+                    Classes="Primary">
+                    <avalonia:MaterialIcon Kind="ArrowLeft" />
+                </Button>
+                <Button
+                    Height="45"
+                    Margin="10,0,0,0"
+                    Classes="Primary">
+                    <avalonia:MaterialIcon HorizontalAlignment="Center" Kind="ArrowRight" />
+                </Button>
+                <Button
+                    Height="45"
+                    Margin="10,0,0,0"
+                    Classes="Primary">
+                    <avalonia:MaterialIcon HorizontalAlignment="Center" Kind="ArrowCollapseRight" />
+                </Button>
+                <Separator />
+                <TextBlock
+                    Margin="20,0,20,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="{Binding CurrentPage} / {Binding TotalPages}" />
+            </StackPanel>
+        </suki:GlassCard>
+    </Grid>
+</UserControl>

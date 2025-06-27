@@ -1,0 +1,100 @@
+<UserControl
+    x:Class="EasyTemplate.Ava.Features.BrowseView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="clr-namespace:SukiUI.Animations;assembly=SukiUI"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="https://github.com/kikipoulet/SukiUI"
+    xmlns:vm="clr-namespace:EasyTemplate.Ava.Features"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:BrowseViewModel"
+    mc:Ignorable="d">
+    <Grid RowDefinitions="80,*">
+        <suki:GlassCard Margin="10">
+            <Grid ColumnDefinitions="300,*,65,65">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Height="35"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding BackCommand}"
+                        IsEnabled="{Binding IsCanGoBack}">
+                        <avalonia:MaterialIcon Kind="ArrowLeft" />
+                    </Button>
+                    <Button
+                        Height="35"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding ForwardCommand}"
+                        IsEnabled="{Binding IsCanGoForward}">
+                        <avalonia:MaterialIcon Kind="ArrowRight" />
+                    </Button>
+                    <Button
+                        Height="35"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding RefreshCommand}">
+                        <avalonia:MaterialIcon Kind="Refresh" />
+                    </Button>
+                    <Button
+                        Height="35"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding HomeCommand}">
+                        <avalonia:MaterialIcon Kind="Home" />
+                    </Button>
+                </StackPanel>
+
+                <TextBox
+                    x:Name="txtUrl"
+                    Grid.Column="1"
+                    Margin="10,5,10,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    suki:TextBoxExtensions.AddDeleteButton="False"
+                    Text="{Binding Url, Mode=TwoWay}" />
+                <Button
+                    Grid.Column="2"
+                    Height="35"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Command="{Binding GoCommand}">
+                    <avalonia:MaterialIcon Kind="Send" />
+                </Button>
+
+                <Button
+                    x:Name="btnConsole"
+                    Grid.Column="3"
+                    Height="35"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding DevCommand}">
+                    <avalonia:MaterialIcon Kind="Console" />
+                </Button>
+            </Grid>
+        </suki:GlassCard>
+
+        <DockPanel
+            x:Name="panelBrowser"
+            Grid.Row="1"
+            Margin="10,0,10,10"
+            LastChildFill="True">
+            <ProgressBar
+                Height="10"
+                Classes="Success"
+                DockPanel.Dock="Top"
+                IsIndeterminate="True"
+                IsVisible="{Binding IsVisible}" />
+            <Decorator x:Name="browserWrapper" />
+        </DockPanel>
+    </Grid>
+</UserControl>
