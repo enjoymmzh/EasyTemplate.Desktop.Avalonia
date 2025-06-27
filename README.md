@@ -1,0 +1,1 @@
+# EasyTemplate.Desktop.Avalonia
